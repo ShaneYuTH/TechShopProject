@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head th:replace="fragments :: page_head('Login - TechShop Admin')" />
+
+<body>
+<div class="container-fluid text-center">
+
+	<div>
+	    <img th:src="@{/images/TechShopLogo-1.png}" />
+	</div>
+	
+	<form th:action="@{/login}" method="post" style="max-width: 350px; margin: 0 auto">
+		<div th:if="${param.error}">
+			<p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+		</div>
+		<div th:if="${param.logout}">
+			<p class="text-warning">You have been logged out.</p>
+		</div>
+		
+		<div class="border border-secondary rounded p-3">
+			<p>Access to TechShop Control Panel</p>
+			<p>
+				<input type="email" name="email" class="form-control" placeholder="E-mail" required />
+			</p>
+			<p>
+				<div class="input-group" id="show_hide_password">
+					<input type="password" name="password" class="form-control" placeholder="Password" id="passwordInput" required />
+					<div class="input-group-append">
+	        			<a href="">
+							<span class="input-group-btn">
+			            		<button class="btn btn-default reveal" type="button">
+			            			<i class="fa fa-eye icon-dimgray" aria-hidden="true"></i>
+			            		</button>
+			          		</span> 
+	        			</a>
+					</div>
+				</div>
+			</p>
+			<p>
+				<input type="checkbox" name="remember-me" />&nbsp;Remember Me
+			</p>		
+			<p>
+				<input type="submit" value="Login" class="btn btn-primary" />
+			</p>
+		</div>
+	</form>
+	
+	<div th:replace="fragments :: footer"></div>
+	
+</div>
+
+<script type="text/javascript">	
+$(document).ready(function() {
+	$(document).ready(function() {
+	    $("#show_hide_password a").on('click', function(event) {
+	        event.preventDefault();
+	        if($('#show_hide_password input').attr("type") == "text"){
+	            $('#show_hide_password input').attr('type', 'password');
+	            $('#show_hide_password i').addClass( "fa-eye" );
+	            $('#show_hide_password i').removeClass( "fa-eye-slash" );
+	        }else if($('#show_hide_password input').attr("type") == "password"){
+	            $('#show_hide_password input').attr('type', 'text');
+	            $('#show_hide_password i').removeClass( "fa-eye" );
+	            $('#show_hide_password i').addClass( "fa-eye-slash" );
+	        }
+	    });
+	});
+});
+
+function togglePassword() {
+	    var password = document.getElementById("passwordInput");
+	    if (password.type === "password") {
+	        password.type = "text";
+	    } else {
+	        password.type = "password";
+	    }
+    }
+</script>
+
+</body>
+</html>
