@@ -14,6 +14,7 @@ import com.techshop.common.entity.User;
 
 public class TechShopUserDetails implements UserDetails {
 
+	private static final long serialVersionUID = 1L;
 	private User user;
 	
 	public TechShopUserDetails(User user) {
@@ -74,11 +75,14 @@ public class TechShopUserDetails implements UserDetails {
 	}
 	
 	public void setFirstName(String firstName) {
-		user.setFirstName(firstName);
+		this.user.setFirstName(firstName);
 	}
 	
-	public void setLastName(String LastName) {
-		user.setLastName(LastName);
+	public void setLastName(String lastName) {
+		this.user.setLastName(lastName);
 	}
 
+	public boolean hasRole(String roleName) {
+		return user.hasRole(roleName);
+	}
 }
