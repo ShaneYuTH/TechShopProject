@@ -1,0 +1,2 @@
+# TechShopProject
+It is an E-Commerce Admin Module Project, a backend module for a shopping website plus a front end for different users’ access. The admin module has user management, brand management, category management and product management functions. Users have five different roles (instances) which are Admin, Assistant, Editor, Salesperson, Shipper. Different roles can manage different things. For example, Admin can manage everything including other roles, however, Shipper can only manage product.
